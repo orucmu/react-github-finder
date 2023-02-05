@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Loading from './Loading';
 import User from './User'
 
-export class UserList extends Component {
+const UserList = ({ loading, users }) => {
 
-    render() {
-        if (this.props.loading) {
-            return <Loading />
-        }
-        return (
-            <div>
-                {
-                    this.props.users.map(user => (
-                        <User user={user} key={user.id} />
-                    ))
-                }
-            </div>
-        )
+    if (loading) {
+        return <Loading />
     }
+    return (
+        <div>
+            {
+                users.map(user => (
+                    <User user={user} key={user.id} />
+                ))
+            }
+        </div>
+    )
 }
 
 export default UserList
